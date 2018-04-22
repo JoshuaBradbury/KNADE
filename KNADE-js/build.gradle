@@ -1,0 +1,31 @@
+buildscript {
+    ext.kotlin_version = '1.2.31'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'kotlin-platform-js'
+
+sourceSets {
+    main {
+        kotlin {
+            if (!rootProject.ext.swizzling) {
+                exclude "uk/co/newagedev/knade/math/VectorSwizzle.kt"
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    expectedBy project(":")
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
+}
