@@ -10,16 +10,6 @@ buildscript {
 }
 apply plugin: 'kotlin-platform-js'
 
-sourceSets {
-    main {
-        kotlin {
-            if (!rootProject.ext.swizzling) {
-                exclude "uk/co/newagedev/knade/math/VectorSwizzle.kt"
-            }
-        }
-    }
-}
-
 repositories {
     mavenCentral()
 }

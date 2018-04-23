@@ -3,18 +3,16 @@ buildscript {
 
     repositories {
         mavenCentral()
-        jcenter()
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.palantir:jacoco-coverage:0.4.0'
     }
 }
 
 apply plugin: 'kotlin-platform-common'
 
-project.ext.swizzling = false
+project.ext.swizzling = true
 
 sourceSets {
     main {
@@ -24,10 +22,19 @@ sourceSets {
             }
         }
     }
+
+    test {
+        kotlin {
+            if (!project.ext.swizzling) {
+                exclude "uk/co/newagedev/knade/math/VectorSwizzleTest.kt"
+            }
+        }
+    }
 }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -35,21 +42,4 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
-}
-
-apply plugin: 'com.palantir.jacoco-full-report'
-
-tasks.withType(Test) {
-    jacocoFullReport {
-        executionData test
-        executionData = files(executionData.findAll({ it.exists() }))
-        onlyIf = {
-            true
-        }
-        reports {
-            csv.enabled false
-            xml.enabled true
-            html.enabled false
-        }
-    }
 }

@@ -1,11 +1,7 @@
 package uk.co.newagedev.knade.math
 
-import java.util.*
-import kotlin.reflect.full.*
-import kotlin.reflect.jvm.reflect
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class VectorSwizzleTest {
 

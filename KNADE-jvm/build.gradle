@@ -10,26 +10,9 @@ buildscript {
 }
 apply plugin: 'kotlin-platform-jvm'
 
-sourceSets {
-    test {
-        kotlin {
-            if (!rootProject.ext.swizzling) {
-                exclude "uk/co/newagedev/knade/math/VectorSwizzleTest.kt"
-            }
-        }
-    }
-
-    main {
-        kotlin {
-            if (!rootProject.ext.swizzling) {
-                exclude "uk/co/newagedev/knade/math/VectorSwizzle.kt"
-            }
-        }
-   }
-}
-
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -39,4 +22,19 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+}
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+jacocoTestReport() {
+    dependsOn test
+    onlyIf {
+        true
+    }
+    reports {
+        html.enabled = false
+        xml.enabled = true
+        xml.destination file("${buildDir}/jacoco.xml")
+    }
 }

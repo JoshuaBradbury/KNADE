@@ -11,5 +11,5 @@ script:
   - gradle build
 
 after_success:
-  - gradle jacocoFullReport
+  - gradle clean test jacocoTestReport
   - bash <(curl -s https://codecov.io/bash)
