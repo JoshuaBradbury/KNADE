@@ -34,7 +34,7 @@ jacocoTestReport() {
         true
     }
     reports {
-        html.enabled = true
+        html.enabled = false
         xml.enabled = true
         xml.destination file("${buildDir}/jacoco.xml")
     }

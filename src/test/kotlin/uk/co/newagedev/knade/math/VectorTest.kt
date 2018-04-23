@@ -1,5 +1,6 @@
 package uk.co.newagedev.knade.math
 
+import kotlin.math.sqrt
 import kotlin.test.*
 
 class VectorTest {
@@ -277,5 +278,218 @@ class VectorTest {
     fun vec4fCopy() {
         val vec = Vec4f(1.0f)
         assertEquals(vec.copy(), vec)
+    }
+
+    @Test
+    fun vec2fPlus() {
+        val vec = Vec2f(1.0f, -5.0f)
+        val vec2 = Vec2f(1.0f, 3.5f)
+        val vec3 = Vec2f(2.0f, -1.5f)
+        val vec4 = vec + vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+    }
+
+    @Test
+    fun vec3fPlus() {
+        val vec = Vec3f(1.0f, -5.0f, 4.75f)
+        val vec2 = Vec3f(1.0f, 3.5f, 6.5f)
+        val vec3 = Vec3f(2.0f, -1.5f, 11.25f)
+        val vec4 = vec + vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+    }
+
+    @Test
+    fun vec4fPlus() {
+        val vec = Vec4f(1.0f, -5.0f, 4.75f, -22.4f)
+        val vec2 = Vec4f(1.0f, 3.5f, 6.5f, 10.0f)
+        val vec3 = Vec4f(2.0f, -1.5f, 11.25f, -12.4f)
+        val vec4 = vec + vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+        assertEquals(vec3.w, vec4.w)
+    }
+
+    @Test
+    fun vec2fMinus() {
+        val vec = Vec2f(1.0f, -5.0f)
+        val vec2 = Vec2f(1.0f, 3.5f)
+        val vec3 = Vec2f(0.0f, -8.5f)
+        val vec4 = vec - vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+    }
+
+    @Test
+    fun vec3fMinus() {
+        val vec = Vec3f(1.0f, -5.0f, 4.75f)
+        val vec2 = Vec3f(1.0f, 3.5f, 6.5f)
+        val vec3 = Vec3f(0.0f, -8.5f, -1.75f)
+        val vec4 = vec - vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+    }
+
+    @Test
+    fun vec4fMinus() {
+        val vec = Vec4f(1.0f, -5.0f, 4.75f, -22.4f)
+        val vec2 = Vec4f(1.0f, 3.5f, 6.5f, 10.0f)
+        val vec3 = Vec4f(0.0f, -8.5f, -1.75f, -32.4f)
+        val vec4 = vec - vec2
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+        assertEquals(vec3.w, vec4.w)
+    }
+
+    @Test
+    fun vec2fTimes() {
+        val vec = Vec2f(1.0f, -5.0f)
+        val vec3 = Vec2f(2.5f, -12.5f)
+        val vec4 = vec * 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+    }
+
+    @Test
+    fun vec3fTimes() {
+        val vec = Vec3f(1.0f, -5.0f, 4.75f)
+        val vec3 = Vec3f(2.5f, -12.5f, 11.875f)
+        val vec4 = vec * 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+    }
+
+    @Test
+    fun vec4fTimes() {
+        val vec = Vec4f(1.0f, -5.0f, 4.75f, -22.4f)
+        val vec3 = Vec4f(2.5f, -12.5f, 11.875f, -56.0f)
+        val vec4 = vec * 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+        assertEquals(vec3.w, vec4.w)
+    }
+
+    @Test
+    fun vec2fDiv() {
+        val vec = Vec2f(1.0f, -5.0f)
+        val vec3 = Vec2f(0.4f, -2.0f)
+        val vec4 = vec / 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+    }
+
+    @Test
+    fun vec3fDiv() {
+        val vec = Vec3f(1.0f, -5.0f, 4.75f)
+        val vec3 = Vec3f(0.4f, -2.0f, 1.9f)
+        val vec4 = vec / 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+    }
+
+    @Test
+    fun vec4fDiv() {
+        val vec = Vec4f(1.0f, -5.0f, 4.75f, -22.4f)
+        val vec3 = Vec4f(0.4f, -2.0f, 1.9f, -8.96f)
+        val vec4 = vec / 2.5f
+
+        assertEquals(vec3.x, vec4.x)
+        assertEquals(vec3.y, vec4.y)
+        assertEquals(vec3.z, vec4.z)
+        assertEquals(vec3.w, vec4.w)
+    }
+
+    @Test
+    fun vec2fLen() {
+        val vec = Vec2f(1.0f, -5.0f)
+
+        assertEquals(sqrt(26.0f), vec.len())
+    }
+
+    @Test
+    fun vec3fLen() {
+        val vec = Vec3f(1.0f, -5.0f, 4.75f)
+
+        assertEquals(sqrt(48.5625f), vec.len())
+    }
+
+    @Test
+    fun vec4fLen() {
+        val vec = Vec4f(1.0f, -5.0f, 4.75f, -22.4f)
+
+        assertEquals(sqrt(550.3225f), vec.len())
+    }
+
+    @Test
+    fun vec2fNorm() {
+        val vec = Vec2f(3.0f, 4.0f)
+        val vec2 = vec.norm()
+
+        assertEquals(0.6f, vec2.x)
+        assertEquals(0.8f, vec2.y)
+    }
+
+    @Test
+    fun vec3fNorm() {
+        val vec = Vec3f(1.0f, 4.0f, 8.0f)
+        val vec2 = vec.norm()
+
+        assertEquals(1.0f / 9.0f, vec2.x)
+        assertEquals(4.0f / 9.0f, vec2.y)
+        assertEquals(8.0f / 9.0f, vec2.z)
+    }
+
+    @Test
+    fun vec4fNorm() {
+        val vec = Vec4f(1.0f, 3.0f, 5.0f, 17.0f)
+        val vec2 = vec.norm()
+
+        assertEquals(1.0f / 18.0f, vec2.x)
+        assertEquals(3.0f / 18.0f, vec2.y)
+        assertEquals(5.0f / 18.0f, vec2.z)
+        assertEquals(17.0f / 18.0f, vec2.w)
+    }
+
+    @Test
+    fun vec2fDot() {
+        val vec = Vec2f(2f, -3f)
+        val vec2 = Vec2f(3f, 6f)
+
+        assertEquals(-12f, vec dot vec2)
+    }
+
+    @Test
+    fun vec3fDot() {
+        val vec = Vec3f(2f, -3f, 4f)
+        val vec2 = Vec3f(3f, 6f, 8f)
+
+        assertEquals(20f, vec dot vec2)
+    }
+
+    @Test
+    fun vec4fDot() {
+        val vec = Vec4f(2f, -3f, 4f, -5f)
+        val vec2 = Vec4f(3f, 6f, 8f, -4f)
+
+        assertEquals(40f, vec dot vec2)
     }
 }
