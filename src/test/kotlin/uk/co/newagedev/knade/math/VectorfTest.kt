@@ -3,7 +3,7 @@ package uk.co.newagedev.knade.math
 import kotlin.math.sqrt
 import kotlin.test.*
 
-class VectorTest {
+class VectorfTest {
 
     @Test
     fun createVec2fWithSpecificValues() {
@@ -17,6 +17,18 @@ class VectorTest {
 
         assertEquals(2.5f, vec.x)
         assertEquals(-5f, vec.y)
+
+        vec.r = 1.25f
+        vec.g = -3f
+
+        assertEquals(1.25f, vec.x)
+        assertEquals(-3f, vec.y)
+
+        vec.s = -11.5f
+        vec.t = 7f
+
+        assertEquals(-11.5f, vec.x)
+        assertEquals(7f, vec.y)
     }
 
     @Test
@@ -34,6 +46,22 @@ class VectorTest {
         assertEquals(2.5f, vec.x)
         assertEquals(-5f, vec.y)
         assertEquals(75.16f, vec.z)
+
+        vec.r = 1.25f
+        vec.g = -3f
+        vec.b = 43.275f
+
+        assertEquals(1.25f, vec.x)
+        assertEquals(-3f, vec.y)
+        assertEquals(43.275f, vec.z)
+
+        vec.s = -11.5f
+        vec.t = 7f
+        vec.p = 16.75f
+
+        assertEquals(-11.5f, vec.x)
+        assertEquals(7f, vec.y)
+        assertEquals(16.75f, vec.z)
     }
 
     @Test
@@ -72,6 +100,26 @@ class VectorTest {
         assertEquals(-5f, vec.y)
         assertEquals(75.16f, vec.z)
         assertEquals(-24.65f, vec.w)
+
+        vec.r = 1.25f
+        vec.g = -3f
+        vec.b = 43.275f
+        vec.a = -13.5f
+
+        assertEquals(1.25f, vec.x)
+        assertEquals(-3f, vec.y)
+        assertEquals(43.275f, vec.z)
+        assertEquals(-13.5f, vec.w)
+
+        vec.s = -11.5f
+        vec.t = 7f
+        vec.p = 16.75f
+        vec.q = -25.33f
+
+        assertEquals(-11.5f, vec.x)
+        assertEquals(7f, vec.y)
+        assertEquals(16.75f, vec.z)
+        assertEquals(-25.33f, vec.w)
     }
 
     @Test
@@ -491,5 +539,67 @@ class VectorTest {
         val vec2 = Vec4f(3f, 6f, 8f, -4f)
 
         assertEquals(40f, vec dot vec2)
+    }
+
+    @Test
+    fun vec3fCross() {
+        val vec = Vec3f(1.0f,0.0f,0.0f)
+        val vec2 = Vec3f(0.0f,1.0f,0.0f)
+        val vec3 = Vec3f(0.0f,0.0f,1.0f)
+        val vec4 = Vec3f(0.0f,0.0f,-1.0f)
+
+        assertEquals(vec3, vec cross vec2)
+        assertEquals(vec4, vec2 cross vec)
+    }
+
+    @Test
+    fun vec2fDataStructConversions() {
+        val vec = Vec2f(-5.0f, 2.1f)
+
+        val list = vec.toList()
+        val array = vec.toArray()
+        val arrayList = vec.toArrayList()
+        val mutableList = vec.toMutableList()
+
+        assertEquals(listOf(-5.0f, 2.1f), list)
+        assertEquals(-5.0f, array[0])
+        assertEquals(2.1f, array[1])
+        assertEquals(arrayListOf(-5.0f, 2.1f), arrayList)
+        assertEquals(mutableListOf(-5.0f, 2.1f), mutableList)
+    }
+
+    @Test
+    fun vec3fDataStructConversions() {
+        val vec = Vec3f(-5.0f, 2.1f, 7.6f)
+
+        val list = vec.toList()
+        val array = vec.toArray()
+        val arrayList = vec.toArrayList()
+        val mutableList = vec.toMutableList()
+
+        assertEquals(listOf(-5.0f, 2.1f, 7.6f), list)
+        assertEquals(-5.0f, array[0])
+        assertEquals(2.1f, array[1])
+        assertEquals(7.6f, array[2])
+        assertEquals(arrayListOf(-5.0f, 2.1f, 7.6f), arrayList)
+        assertEquals(mutableListOf(-5.0f, 2.1f, 7.6f), mutableList)
+    }
+
+    @Test
+    fun vec4fDataStructConversions() {
+        val vec = Vec4f(-5.0f, 2.1f, 7.6f, -11.2f)
+
+        val list = vec.toList()
+        val array = vec.toArray()
+        val arrayList = vec.toArrayList()
+        val mutableList = vec.toMutableList()
+
+        assertEquals(listOf(-5.0f, 2.1f, 7.6f, -11.2f), list)
+        assertEquals(-5.0f, array[0])
+        assertEquals(2.1f, array[1])
+        assertEquals(7.6f, array[2])
+        assertEquals(-11.2f, array[3])
+        assertEquals(arrayListOf(-5.0f, 2.1f, 7.6f, -11.2f), arrayList)
+        assertEquals(mutableListOf(-5.0f, 2.1f, 7.6f, -11.2f), mutableList)
     }
 }
