@@ -1,5 +1,7 @@
 package uk.co.newagedev.knade.math
 
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.test.*
 
 class MatrixfTest {
@@ -609,5 +611,97 @@ class MatrixfTest {
         mat.translate(Vec4f(5.0f, -2.0f, 1.0f, 0.5f))
 
         assertEquals(mat.translation, vec3)
+    }
+
+    @Test
+    fun mat2fGetIdentity() {
+        val mat  = Mat2f(1.0f, 0.0f, 0.0f, 1.0f)
+        val mat2 = Mat2f.identity()
+
+        assertEquals(mat, mat2)
+    }
+
+    @Test
+    fun mat3fGetIdentity() {
+        val mat  = Mat3f(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+        val mat2 = Mat3f.identity()
+
+        assertEquals(mat, mat2)
+    }
+
+    @Test
+    fun mat4fGetIdentity() {
+        val mat  = Mat4f(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+        val mat2 = Mat4f.identity()
+
+        assertEquals(mat, mat2)
+    }
+
+    @Test
+    fun mat3fGetTranslation() {
+        val vec = Vec3f(-5.0f, 2.0f, 3.0f)
+        val mat = Mat3f.translation(vec)
+
+        assertEquals(vec, mat.translation)
+    }
+
+    @Test
+    fun mat4fGetTranslation() {
+        val vec = Vec4f(-5.0f, 2.0f, 3.0f, 7.5f)
+        val mat = Mat4f.translation(vec)
+
+        assertEquals(vec, mat.translation)
+    }
+
+    @Test
+    fun mat3fGetRotation() {
+        val c = cos(90.0f.toRadians())
+        val s = sin(90.0f.toRadians())
+
+        val mat = Mat3f.translation(Vec3f(5.0f, 4.0f, 2.0f))
+        val mat2 = Mat3f.rotation(90.0f, Vec3f(0.0f, 0.0f, 1.0f))
+        val mat3 = Mat3f(c, s, 0.0f, -s, c, 0.0f, 0.0f, 0.0f, 1.0f)
+
+        assertEquals(mat3, mat2)
+
+        val mat4 = mat.rotate(90.0f, Vec3f(0.0f, 0.0f, 1.0f))
+
+        assertEquals(Vec3f(-4.0f, 5.0f, 2.0f), mat4.translation)
+
+        val mat5 = Mat3f.rotation(90.0f, Vec3f(0.0f, 1.0f, 0.0f))
+        val mat6 = Mat3f(c, 0.0f, -s, 0.0f, 1.0f, 0.0f, s, 0.0f, c)
+
+        assertEquals(mat6, mat5)
+
+        val mat7 = Mat3f.rotation(90.0f, Vec3f(1.0f, 0.0f, 0.0f))
+        val mat8 = Mat3f(1.0f, 0.0f, 0.0f, 0.0f, c, s, 0.0f, -s, c)
+
+        assertEquals(mat8, mat7)
+    }
+
+    @Test
+    fun mat4fGetRotation() {
+        val c = cos(90.0f.toRadians())
+        val s = sin(90.0f.toRadians())
+
+        val mat = Mat4f.translation(Vec4f(5.0f, 4.0f, 2.0f, 3.0f))
+        val mat2 = Mat4f.rotation(90.0f, Vec3f(0.0f, 0.0f, 1.0f))
+        val mat3 = Mat4f(c, s, 0.0f, 0.0f, -s, c, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+
+        assertEquals(mat3, mat2)
+
+        val mat4 = mat.rotate(90.0f, Vec3f(0.0f, 0.0f, 1.0f))
+
+        assertEquals(Vec4f(-4.0f, 5.0f, 2.0f, 3.0f), mat4.translation)
+
+        val mat5 = Mat4f.rotation(90.0f, Vec3f(0.0f, 1.0f, 0.0f))
+        val mat6 = Mat4f(c, 0.0f, -s, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, s, 0.0f, c, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+
+        assertEquals(mat6, mat5)
+
+        val mat7 = Mat4f.rotation(90.0f, Vec3f(1.0f, 0.0f, 0.0f))
+        val mat8 = Mat4f(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, c, s, 0.0f, 0.0f, -s, c, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+
+        assertEquals(mat8, mat7)
     }
 }

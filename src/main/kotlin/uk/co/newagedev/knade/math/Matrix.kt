@@ -196,31 +196,9 @@ data class Mat3f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
     }
 
     fun rotate(angleInDegrees: Float, vec: Vec3f): Mat3f {
-        if (vec.x != 0.0f) {
-            val mat = Mat3f.rotation(angleInDegrees, Vec3f(1.0f, 0.0f, 0.0f)) * vec.x * this
+        val mat = Mat3f.rotation(angleInDegrees, vec)
 
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        if (vec.y != 0.0f) {
-            val mat = Mat3f.rotation(angleInDegrees, Vec3f(0.0f, 1.0f, 0.0f)) * vec.y * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        if (vec.z != 0.0f) {
-            val mat = Mat3f.rotation(angleInDegrees, Vec3f(0.0f, 0.0f, 1.0f)) * vec.z * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        return this
+        return mat * this
     }
 
     companion object {
@@ -229,7 +207,7 @@ data class Mat3f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
         }
 
         fun translation(vec: Vec3f): Mat3f {
-            return Mat3f().translate(vec)
+            return Mat3f(m20 = vec.x, m21 = vec.y, m22 = vec.z)
         }
 
         fun rotation(angleInDegrees: Float, vec: Vec3f): Mat3f {
@@ -239,15 +217,15 @@ data class Mat3f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
             var mat = Mat3f()
 
             if (vec.x != 0.0f) {
-                mat *= vec.x * Mat3f(m11 = c, m21 = s, m12 = -s, m22 = c)
+                mat *= vec.x * Mat3f(m11 = c, m21 = -s, m12 = s, m22 = c)
             }
 
             if (vec.y != 0.0f) {
-                mat *= vec.y * Mat3f(m00 = c, m20 = -s, m02 = s, m22 = c)
+                mat *= vec.y * Mat3f(m00 = c, m20 = s, m02 = -s, m22 = c)
             }
 
             if (vec.z != 0.0f) {
-                mat *= vec.z * Mat3f(m00 = c, m10 = s, m01 = -s, m11 = c)
+                mat *= vec.z * Mat3f(m00 = c, m10 = -s, m01 = s, m11 = c)
             }
 
             return mat
@@ -379,34 +357,9 @@ data class Mat4f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
     }
 
     fun rotate(angleInDegrees: Float, vec: Vec3f): Mat4f {
-        if (vec.x != 0.0f) {
-            val mat = Mat4f.rotation(angleInDegrees, Vec3f(1.0f, 0.0f, 0.0f)) * vec.x * this
+        val mat = Mat4f.rotation(angleInDegrees, vec)
 
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        if (vec.y != 0.0f) {
-            val mat = Mat4f.rotation(angleInDegrees, Vec3f(0.0f, 1.0f, 0.0f)) * vec.y * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        if (vec.z != 0.0f) {
-            val mat = Mat4f.rotation(angleInDegrees, Vec3f(0.0f, 0.0f, 1.0f)) * vec.z * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        return this
+        return mat * this
     }
 
     companion object {
@@ -415,7 +368,7 @@ data class Mat4f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
         }
 
         fun translation(vec: Vec4f): Mat4f {
-            return Mat4f().translate(vec)
+            return Mat4f(m30 = vec.x, m31 = vec.y, m32 = vec.z, m33 = vec.w)
         }
 
         fun rotation(angleInDegrees: Float, vec: Vec3f): Mat4f {
@@ -425,15 +378,15 @@ data class Mat4f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
             var mat = Mat4f()
 
             if (vec.x != 0.0f) {
-                mat *= vec.x * Mat4f(m11 = c, m21 = s, m12 = -s, m22 = c)
+                mat *= vec.x * Mat4f(m11 = c, m21 = -s, m12 = s, m22 = c)
             }
 
             if (vec.y != 0.0f) {
-                mat *= vec.y * Mat4f(m00 = c, m20 = -s, m02 = s, m22 = c)
+                mat *= vec.y * Mat4f(m00 = c, m20 = s, m02 = -s, m22 = c)
             }
 
             if (vec.z != 0.0f) {
-                mat *= vec.z * Mat4f(m00 = c, m10 = s, m01 = -s, m11 = c)
+                mat *= vec.z * Mat4f(m00 = c, m10 = -s, m01 = s, m11 = c)
             }
 
             return mat
@@ -625,31 +578,9 @@ data class Mat3d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
     }
 
     fun rotate(angleInDegrees: Double, vec: Vec3d): Mat3d {
-        if (vec.x != 0.0) {
-            val mat = Mat3d.rotation(angleInDegrees, Vec3d(1.0, 0.0, 0.0)) * vec.x * this
+        val mat = Mat3d.rotation(angleInDegrees, vec)
 
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        if (vec.y != 0.0) {
-            val mat = Mat3d.rotation(angleInDegrees, Vec3d(0.0, 1.0, 0.0)) * vec.y * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        if (vec.z != 0.0) {
-            val mat = Mat3d.rotation(angleInDegrees, Vec3d(0.0, 0.0, 1.0)) * vec.z * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-        }
-
-        return this
+        return mat * this
     }
 
     companion object {
@@ -658,7 +589,7 @@ data class Mat3d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
         }
 
         fun translation(vec: Vec3d): Mat3d {
-            return Mat3d().translate(vec)
+            return Mat3d(m20 = vec.x, m21 = vec.y, m22 = vec.z)
         }
 
         fun rotation(angleInDegrees: Double, vec: Vec3d): Mat3d {
@@ -668,15 +599,15 @@ data class Mat3d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
             var mat = Mat3d()
 
             if (vec.x != 0.0) {
-                mat *= vec.x * Mat3d(m11 = c, m21 = s, m12 = -s, m22 = c)
+                mat *= vec.x * Mat3d(m11 = c, m21 = -s, m12 = s, m22 = c)
             }
 
             if (vec.y != 0.0) {
-                mat *= vec.y * Mat3d(m00 = c, m20 = -s, m02 = s, m22 = c)
+                mat *= vec.y * Mat3d(m00 = c, m20 = s, m02 = -s, m22 = c)
             }
 
             if (vec.z != 0.0) {
-                mat *= vec.z * Mat3d(m00 = c, m10 = s, m01 = -s, m11 = c)
+                mat *= vec.z * Mat3d(m00 = c, m10 = -s, m01 = s, m11 = c)
             }
 
             return mat
@@ -808,34 +739,9 @@ data class Mat4d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
     }
 
     fun rotate(angleInDegrees: Double, vec: Vec3d): Mat4d {
-        if (vec.x != 0.0) {
-            val mat = Mat4d.rotation(angleInDegrees, Vec3d(1.0, 0.0, 0.0)) * vec.x * this
+        val mat = Mat4d.rotation(angleInDegrees, vec)
 
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        if (vec.y != 0.0) {
-            val mat = Mat4d.rotation(angleInDegrees, Vec3d(0.0, 1.0, 0.0)) * vec.y * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        if (vec.z != 0.0) {
-            val mat = Mat4d.rotation(angleInDegrees, Vec3d(0.0, 0.0, 1.0)) * vec.z * this
-
-            r0 = mat.r0
-            r1 = mat.r1
-            r2 = mat.r2
-            r3 = mat.r3
-        }
-
-        return this
+        return mat * this
     }
 
     companion object {
@@ -844,7 +750,7 @@ data class Mat4d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
         }
 
         fun translation(vec: Vec4d): Mat4d {
-            return Mat4d().translate(vec)
+            return Mat4d(m30 = vec.x, m31 = vec.y, m32 = vec.z, m33 = vec.w)
         }
 
         fun rotation(angleInDegrees: Double, vec: Vec3d): Mat4d {
@@ -854,15 +760,15 @@ data class Mat4d(var m00: Double = 1.0, var m01: Double = 0.0, var m02: Double =
             var mat = Mat4d()
 
             if (vec.x != 0.0) {
-                mat *= vec.x * Mat4d(m11 = c, m21 = s, m12 = -s, m22 = c)
+                mat *= vec.x * Mat4d(m11 = c, m21 = -s, m12 = s, m22 = c)
             }
 
             if (vec.y != 0.0) {
-                mat *= vec.y * Mat4d(m00 = c, m20 = -s, m02 = s, m22 = c)
+                mat *= vec.y * Mat4d(m00 = c, m20 = s, m02 = -s, m22 = c)
             }
 
             if (vec.z != 0.0) {
-                mat *= vec.z * Mat4d(m00 = c, m10 = s, m01 = -s, m11 = c)
+                mat *= vec.z * Mat4d(m00 = c, m10 = -s, m01 = s, m11 = c)
             }
 
             return mat
