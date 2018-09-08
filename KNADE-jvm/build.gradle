@@ -1,7 +1,7 @@
 apply plugin: 'kotlin-platform-jvm'
 
 buildscript {
-    ext.kotlin_version = '1.2.50'
+    ext.kotlin_version = '1.2.61'
 
     repositories {
         mavenCentral()
@@ -28,14 +28,18 @@ dependencies {
 apply plugin: 'java'
 apply plugin: 'jacoco'
 
+jacoco {
+    toolVersion = "0.8.2"
+}
+
 jacocoTestReport() {
     dependsOn test
     onlyIf {
         true
     }
     reports {
-        html.enabled = false
-        xml.enabled = true
+        html.enabled = true
+        xml.enabled = false
         xml.destination file("${buildDir}/jacoco.xml")
     }
 }

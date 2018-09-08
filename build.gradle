@@ -1,7 +1,7 @@
 apply plugin: 'kotlin-platform-common'
 
 buildscript {
-    ext.kotlin_version = '1.2.50'
+    ext.kotlin_version = '1.2.61'
 
     repositories {
         mavenCentral()
