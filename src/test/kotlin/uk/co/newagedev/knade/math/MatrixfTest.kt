@@ -35,6 +35,15 @@ class MatrixfTest {
 
         assertEquals(-11.2f, mat2.m10)
         assertEquals(5.1f, mat2.m11)
+
+        mat2.c0 = Vec2f(6.2f, 7.5f)
+        mat2.c1 = Vec2f(5.1f, -11.2f)
+
+        assertEquals(6.2f, mat2.m00)
+        assertEquals(7.5f, mat2.m01)
+
+        assertEquals(5.1f, mat2.m10)
+        assertEquals(-11.2f, mat2.m11)
     }
 
     @Test
@@ -90,6 +99,22 @@ class MatrixfTest {
         assertEquals(8.52f, mat2.m20)
         assertEquals(16.2f, mat2.m21)
         assertEquals(3.33f, mat2.m22)
+
+        mat2.c0 = Vec3f(4.5f, 6.2f, 7.5f)
+        mat2.c1 = Vec3f(-9.1f, 5.1f, -11.2f)
+        mat2.c2 = Vec3f(3.33f, 16.2f, 8.52f)
+
+        assertEquals(7.5f, mat2.m02)
+        assertEquals(6.2f, mat2.m01)
+        assertEquals(4.5f, mat2.m00)
+
+        assertEquals(-11.2f, mat2.m12)
+        assertEquals(5.1f, mat2.m11)
+        assertEquals(-9.1f, mat2.m10)
+
+        assertEquals(8.52f, mat2.m22)
+        assertEquals(16.2f, mat2.m21)
+        assertEquals(3.33f, mat2.m20)
     }
 
     @Test
@@ -177,6 +202,31 @@ class MatrixfTest {
         assertEquals(15f, mat2.m31)
         assertEquals(-120f, mat2.m32)
         assertEquals(-60.5f, mat2.m33)
+
+        mat2.c0 = Vec4f(12.3f, 4.5f, 6.2f, 7.5f)
+        mat2.c1 = Vec4f(7f, -9.1f, 5.1f, -11.2f)
+        mat2.c2 = Vec4f(12.23f, 3.33f, 16.2f, 8.52f)
+        mat2.c3 = Vec4f(-60.5f, -120f, 15f, 17f)
+
+        assertEquals(7.5f, mat2.m03)
+        assertEquals(6.2f, mat2.m02)
+        assertEquals(4.5f, mat2.m01)
+        assertEquals(12.3f, mat2.m00)
+
+        assertEquals(-11.2f, mat2.m13)
+        assertEquals(5.1f, mat2.m12)
+        assertEquals(-9.1f, mat2.m11)
+        assertEquals(7f, mat2.m10)
+
+        assertEquals(8.52f, mat2.m23)
+        assertEquals(16.2f, mat2.m22)
+        assertEquals(3.33f, mat2.m21)
+        assertEquals(12.23f, mat2.m20)
+
+        assertEquals(17f, mat2.m33)
+        assertEquals(15f, mat2.m32)
+        assertEquals(-120f, mat2.m31)
+        assertEquals(-60.5f, mat2.m30)
     }
 
     @Test
@@ -245,12 +295,12 @@ class MatrixfTest {
         val mat5: Any = Mat3f()
         val mat6 = Mat2f(1.0f, 2.0f, 3.0f)
 
-        assertTrue(mat == mat)
-        assertFalse(mat == mat2)
-        assertFalse(mat == mat3)
-        assertFalse(mat == mat4)
-        assertFalse(mat == mat5)
-        assertFalse(mat == mat6)
+        assertEquals(mat, mat)
+        assertNotEquals(mat, mat2)
+        assertNotEquals(mat, mat3)
+        assertNotEquals(mat, mat4)
+        assertNotEquals(mat, mat5)
+        assertNotEquals(mat, mat6)
 
         assertNotNull(mat.hashCode())
 
@@ -274,17 +324,17 @@ class MatrixfTest {
         val mat10 = Mat3f(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f)
         val mat11 = Mat3f(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f)
 
-        assertTrue(mat == mat)
-        assertFalse(mat == mat2)
-        assertFalse(mat == mat3)
-        assertFalse(mat == mat4)
-        assertFalse(mat == mat5)
-        assertFalse(mat == mat6)
-        assertFalse(mat == mat7)
-        assertFalse(mat == mat8)
-        assertFalse(mat == mat9)
-        assertFalse(mat == mat10)
-        assertFalse(mat == mat11)
+        assertEquals(mat, mat)
+        assertNotEquals(mat, mat2)
+        assertNotEquals(mat, mat3)
+        assertNotEquals(mat, mat4)
+        assertNotEquals(mat, mat5)
+        assertNotEquals(mat, mat6)
+        assertNotEquals(mat, mat7)
+        assertNotEquals(mat, mat8)
+        assertNotEquals(mat, mat9)
+        assertNotEquals(mat, mat10)
+        assertNotEquals(mat, mat11)
 
         assertNotNull(mat.hashCode())
 
@@ -322,24 +372,24 @@ class MatrixfTest {
         val mat17 = Mat4f(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f)
         val mat18 = Mat4f(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f)
 
-        assertTrue(mat == mat)
-        assertFalse(mat == mat2)
-        assertFalse(mat == mat3)
-        assertFalse(mat == mat4)
-        assertFalse(mat == mat5)
-        assertFalse(mat == mat6)
-        assertFalse(mat == mat7)
-        assertFalse(mat == mat8)
-        assertFalse(mat == mat9)
-        assertFalse(mat == mat10)
-        assertFalse(mat == mat11)
-        assertFalse(mat == mat12)
-        assertFalse(mat == mat13)
-        assertFalse(mat == mat14)
-        assertFalse(mat == mat15)
-        assertFalse(mat == mat16)
-        assertFalse(mat == mat17)
-        assertFalse(mat == mat18)
+        assertEquals(mat, mat)
+        assertNotEquals(mat, mat2)
+        assertNotEquals(mat, mat3)
+        assertNotEquals(mat, mat4)
+        assertNotEquals(mat, mat5)
+        assertNotEquals(mat, mat6)
+        assertNotEquals(mat, mat7)
+        assertNotEquals(mat, mat8)
+        assertNotEquals(mat, mat9)
+        assertNotEquals(mat, mat10)
+        assertNotEquals(mat, mat11)
+        assertNotEquals(mat, mat12)
+        assertNotEquals(mat, mat13)
+        assertNotEquals(mat, mat14)
+        assertNotEquals(mat, mat15)
+        assertNotEquals(mat, mat16)
+        assertNotEquals(mat, mat17)
+        assertNotEquals(mat, mat18)
 
         assertNotNull(mat.hashCode())
 

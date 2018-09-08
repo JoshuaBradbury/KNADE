@@ -1,6 +1,6 @@
 package uk.co.newagedev.knade.math
 
-interface Vec<V, T> {
+interface Vec<V: Vec<V, T>, T: Number> {
     operator fun plus(vec: V): V
     operator fun minus(vec: V): V
     operator fun times(sca: T): V

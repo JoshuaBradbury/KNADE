@@ -5,11 +5,11 @@ import kotlin.math.sqrt
 data class Vec2d(var x: Double, var y: Double): Vec<Vec2d, Double> {
     constructor(n: Double = 0.0): this(n, n)
 
-    inline var r: Double get() = x; set(value) { x = value }
-    inline var g: Double get() = y; set(value) { y = value }
+    var r: Double get() = x; set(value) { x = value }
+    var g: Double get() = y; set(value) { y = value }
 
-    inline var s: Double get() = x; set(value) { x = value }
-    inline var t: Double get() = y; set(value) { y = value }
+    var s: Double get() = x; set(value) { x = value }
+    var t: Double get() = y; set(value) { y = value }
 
     override fun plus(vec: Vec2d) = Vec2d(x + vec.x, y + vec.y)
     override fun minus(vec: Vec2d) = Vec2d(x - vec.x, y - vec.y)
@@ -31,13 +31,13 @@ data class Vec3d constructor(var x: Double, var y: Double, var z: Double): Vec<V
     constructor(vec: Vec2d, z: Double = 0.0): this(vec.x, vec.y, z)
     constructor(x: Double, vec: Vec2d): this(x, vec.x, vec.y)
 
-    inline var r: Double get() = x; set(value) { x = value }
-    inline var g: Double get() = y; set(value) { y = value }
-    inline var b: Double get() = z; set(value) { z = value }
+    var r: Double get() = x; set(value) { x = value }
+    var g: Double get() = y; set(value) { y = value }
+    var b: Double get() = z; set(value) { z = value }
 
-    inline var s: Double get() = x; set(value) { x = value }
-    inline var t: Double get() = y; set(value) { y = value }
-    inline var p: Double get() = z; set(value) { z = value }
+    var s: Double get() = x; set(value) { x = value }
+    var t: Double get() = y; set(value) { y = value }
+    var p: Double get() = z; set(value) { z = value }
 
     override fun plus(vec: Vec3d) = Vec3d(x + vec.x, y + vec.y, z + vec.z)
     override fun minus(vec: Vec3d) = Vec3d(x - vec.x, y - vec.y, z - vec.z)
@@ -64,15 +64,15 @@ data class Vec4d(var x: Double, var y: Double, var z: Double, var w: Double): Ve
     constructor(x: Double, vec: Vec2d, w: Double = 0.0): this(x, vec.x, vec.y, w)
     constructor(x: Double, y: Double, vec: Vec2d): this(x, y, vec.x, vec.y)
 
-    inline var r: Double get() = x; set(value) { x = value }
-    inline var g: Double get() = y; set(value) { y = value }
-    inline var b: Double get() = z; set(value) { z = value }
-    inline var a: Double get() = w; set(value) { w = value }
+    var r: Double get() = x; set(value) { x = value }
+    var g: Double get() = y; set(value) { y = value }
+    var b: Double get() = z; set(value) { z = value }
+    var a: Double get() = w; set(value) { w = value }
 
-    inline var s: Double get() = x; set(value) { x = value }
-    inline var t: Double get() = y; set(value) { y = value }
-    inline var p: Double get() = z; set(value) { z = value }
-    inline var q: Double get() = w; set(value) { w = value }
+    var s: Double get() = x; set(value) { x = value }
+    var t: Double get() = y; set(value) { y = value }
+    var p: Double get() = z; set(value) { z = value }
+    var q: Double get() = w; set(value) { w = value }
 
     override fun plus(vec: Vec4d) = Vec4d(x + vec.x, y + vec.y, z + vec.z, w + vec.w)
     override fun minus(vec: Vec4d) = Vec4d(x - vec.x, y - vec.y, z - vec.z, w - vec.w)

@@ -5,11 +5,11 @@ import kotlin.math.sqrt
 data class Vec2f(var x: Float, var y: Float): Vec<Vec2f, Float> {
     constructor(n: Float = 0.0f): this(n, n)
 
-    inline var r: Float get() = x; set(value) { x = value }
-    inline var g: Float get() = y; set(value) { y = value }
+    var r: Float get() = x; set(value) { x = value }
+    var g: Float get() = y; set(value) { y = value }
 
-    inline var s: Float get() = x; set(value) { x = value }
-    inline var t: Float get() = y; set(value) { y = value }
+    var s: Float get() = x; set(value) { x = value }
+    var t: Float get() = y; set(value) { y = value }
 
     override fun plus(vec: Vec2f) = Vec2f(x + vec.x, y + vec.y)
     override fun minus(vec: Vec2f) = Vec2f(x - vec.x, y - vec.y)
@@ -31,13 +31,13 @@ data class Vec3f constructor(var x: Float, var y: Float, var z: Float): Vec<Vec3
     constructor(vec: Vec2f, z: Float = 0.0f): this(vec.x, vec.y, z)
     constructor(x: Float, vec: Vec2f): this(x, vec.x, vec.y)
 
-    inline var r: Float get() = x; set(value) { x = value }
-    inline var g: Float get() = y; set(value) { y = value }
-    inline var b: Float get() = z; set(value) { z = value }
+    var r: Float get() = x; set(value) { x = value }
+    var g: Float get() = y; set(value) { y = value }
+    var b: Float get() = z; set(value) { z = value }
 
-    inline var s: Float get() = x; set(value) { x = value }
-    inline var t: Float get() = y; set(value) { y = value }
-    inline var p: Float get() = z; set(value) { z = value }
+    var s: Float get() = x; set(value) { x = value }
+    var t: Float get() = y; set(value) { y = value }
+    var p: Float get() = z; set(value) { z = value }
 
     override fun plus(vec: Vec3f) = Vec3f(x + vec.x, y + vec.y, z + vec.z)
     override fun minus(vec: Vec3f) = Vec3f(x - vec.x, y - vec.y, z - vec.z)
@@ -64,15 +64,15 @@ data class Vec4f(var x: Float, var y: Float, var z: Float, var w: Float): Vec<Ve
     constructor(x: Float, vec: Vec2f, w: Float = 0.0f): this(x, vec.x, vec.y, w)
     constructor(x: Float, y: Float, vec: Vec2f): this(x, y, vec.x, vec.y)
 
-    inline var r: Float get() = x; set(value) { x = value }
-    inline var g: Float get() = y; set(value) { y = value }
-    inline var b: Float get() = z; set(value) { z = value }
-    inline var a: Float get() = w; set(value) { w = value }
+    var r: Float get() = x; set(value) { x = value }
+    var g: Float get() = y; set(value) { y = value }
+    var b: Float get() = z; set(value) { z = value }
+    var a: Float get() = w; set(value) { w = value }
 
-    inline var s: Float get() = x; set(value) { x = value }
-    inline var t: Float get() = y; set(value) { y = value }
-    inline var p: Float get() = z; set(value) { z = value }
-    inline var q: Float get() = w; set(value) { w = value }
+    var s: Float get() = x; set(value) { x = value }
+    var t: Float get() = y; set(value) { y = value }
+    var p: Float get() = z; set(value) { z = value }
+    var q: Float get() = w; set(value) { w = value }
 
     override fun plus(vec: Vec4f) = Vec4f(x + vec.x, y + vec.y, z + vec.z, w + vec.w)
     override fun minus(vec: Vec4f) = Vec4f(x - vec.x, y - vec.y, z - vec.z, w - vec.w)

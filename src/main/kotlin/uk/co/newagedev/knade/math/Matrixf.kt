@@ -4,19 +4,19 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 data class Mat2f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m10: Float = 0.0f, var m11: Float = 1.0f): Mat<Mat2f, Vec2f, Float> {
-    inline var r0: Vec2f
+    var r0: Vec2f
         get() = Vec2f(m00, m10)
         set(value) { m00 = value.x; m10 = value.y }
 
-    inline var r1: Vec2f
+    var r1: Vec2f
         get() = Vec2f(m01, m11)
         set(value) { m01 = value.x; m11 = value.y }
 
-    inline var c0: Vec2f
+    var c0: Vec2f
         get() = Vec2f(m00, m01)
         set(value) { m00 = value.x; m01 = value.y }
 
-    inline var c1: Vec2f
+    var c1: Vec2f
         get() = Vec2f(m10, m11)
         set(value) { m10 = value.x; m11 = value.y }
 
@@ -85,31 +85,31 @@ data class Mat2f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m10: Float = 
 }
 
 data class Mat3f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 0.0f, var m10: Float = 0.0f, var m11: Float = 1.0f, var m12: Float = 0.0f, var m20: Float = 0.0f, var m21: Float = 0.0f, var m22: Float = 1.0f): Mat<Mat3f, Vec3f, Float> {
-    inline var translation: Vec3f
+    var translation: Vec3f
         get() = Vec3f(m20, m21, m22)
         set(value) { m20 = value.x; m21 = value.y; m22 = value.z }
 
-    inline var r0: Vec3f
+    var r0: Vec3f
         get() = Vec3f(m00, m10, m20)
         set(value) { m00 = value.x; m10 = value.y; m20 = value.z }
 
-    inline var r1: Vec3f
+    var r1: Vec3f
         get() = Vec3f(m01, m11, m21)
         set(value) { m01 = value.x; m11 = value.y; m21 = value.z }
 
-    inline var r2: Vec3f
+    var r2: Vec3f
         get() = Vec3f(m02, m12, m22)
         set(value) { m02 = value.x; m12 = value.y; m22 = value.z }
 
-    inline var c0: Vec3f
+    var c0: Vec3f
         get() = Vec3f(m00, m01, m02)
         set(value) { m00 = value.x; m01 = value.y; m02 = value.z }
 
-    inline var c1: Vec3f
+    var c1: Vec3f
         get() = Vec3f(m10, m11, m12)
         set(value) { m10 = value.x; m11 = value.y; m12 = value.z }
 
-    inline var c2: Vec3f
+    var c2: Vec3f
         get() = Vec3f(m20, m21, m22)
         set(value) { m20 = value.x; m21 = value.y; m22 = value.z }
 
@@ -225,39 +225,39 @@ data class Mat3f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 
 }
 
 data class Mat4f(var m00: Float = 1.0f, var m01: Float = 0.0f, var m02: Float = 0.0f, var m03: Float = 0.0f, var m10: Float = 0.0f, var m11: Float = 1.0f, var m12: Float = 0.0f, var m13: Float = 0.0f, var m20: Float = 0.0f, var m21: Float = 0.0f, var m22: Float = 1.0f, var m23: Float = 0.0f, var m30: Float = 0.0f, var m31: Float = 0.0f, var m32: Float = 0.0f, var m33: Float = 1.0f): Mat<Mat4f, Vec4f, Float> {
-    inline var translation: Vec4f
+    var translation: Vec4f
         get() = Vec4f(m30, m31, m32, m33)
         set(value) { m30 = value.x; m31 = value.y; m32 = value.z; m33 = value.w }
 
-    inline var r0: Vec4f
+    var r0: Vec4f
         get() = Vec4f(m00, m10, m20, m30)
         set(value) { m00 = value.x; m10 = value.y; m20 = value.z; m30 = value.w }
 
-    inline var r1: Vec4f
+    var r1: Vec4f
         get() = Vec4f(m01, m11, m21, m31)
         set(value) { m01 = value.x; m11 = value.y; m21 = value.z; m31 = value.w }
 
-    inline var r2: Vec4f
+    var r2: Vec4f
         get() = Vec4f(m02, m12, m22, m32)
         set(value) { m02 = value.x; m12 = value.y; m22 = value.z; m32 = value.w }
 
-    inline var r3: Vec4f
+    var r3: Vec4f
         get() = Vec4f(m03, m13, m23, m33)
         set(value) { m03 = value.x; m13 = value.y; m23 = value.z; m33 = value.w }
 
-    inline var c0: Vec4f
+    var c0: Vec4f
         get() = Vec4f(m00, m01, m02, m03)
         set(value) { m00 = value.x; m01 = value.y; m02 = value.z; m03 = value.w }
 
-    inline var c1: Vec4f
+    var c1: Vec4f
         get() = Vec4f(m10, m11, m12, m13)
         set(value) { m10 = value.x; m11 = value.y; m12 = value.z; m13 = value.w }
 
-    inline var c2: Vec4f
+    var c2: Vec4f
         get() = Vec4f(m20, m21, m22, m23)
         set(value) { m20 = value.x; m21 = value.y; m22 = value.z; m23 = value.w }
 
-    inline var c3: Vec4f
+    var c3: Vec4f
         get() = Vec4f(m30, m31, m32, m33)
         set(value) { m30 = value.x; m31 = value.y; m32 = value.z; m33 = value.w }
 

@@ -7,7 +7,7 @@ import kotlin.test.*
 class MatrixdTest {
 
     @Test
-    fun createMat2dWithSpeciicValues() {
+    fun createMat2dWithSpecificValues() {
         val mat = Mat2d(7.5, 6.2, -11.2, 5.1)
 
         assertEquals(7.5, mat.m00)
@@ -35,10 +35,19 @@ class MatrixdTest {
 
         assertEquals(-11.2, mat2.m10)
         assertEquals(5.1, mat2.m11)
+
+        mat2.c0 = Vec2d(6.2, 7.5)
+        mat2.c1 = Vec2d(5.1, -11.2)
+
+        assertEquals(7.5, mat2.m01)
+        assertEquals(6.2, mat2.m00)
+
+        assertEquals(-11.2, mat2.m11)
+        assertEquals(5.1, mat2.m10)
     }
 
     @Test
-    fun createMat3dWithSpeciicValues() {
+    fun createMat3dWithSpecificValues() {
         val mat = Mat3d(7.5, 6.2, 4.5, -11.2, 5.1, -9.1, 8.52, 16.2, 3.33)
 
         assertEquals(7.5, mat.m00)
@@ -90,10 +99,26 @@ class MatrixdTest {
         assertEquals(8.52, mat2.m20)
         assertEquals(16.2, mat2.m21)
         assertEquals(3.33, mat2.m22)
+
+        mat2.c0 = Vec3d(4.5, 6.2, 7.5)
+        mat2.c1 = Vec3d(-9.1, 5.1, -11.2)
+        mat2.c2 = Vec3d(3.33, 16.2, 8.52)
+
+        assertEquals(7.5, mat2.m02)
+        assertEquals(6.2, mat2.m01)
+        assertEquals(4.5, mat2.m00)
+
+        assertEquals(-11.2, mat2.m12)
+        assertEquals(5.1, mat2.m11)
+        assertEquals(-9.1, mat2.m10)
+
+        assertEquals(8.52, mat2.m22)
+        assertEquals(16.2, mat2.m21)
+        assertEquals(3.33, mat2.m20)
     }
 
     @Test
-    fun createMat4dWithSpeciicValues() {
+    fun createMat4dWithSpecificValues() {
         val mat = Mat4d(7.5, 6.2, 4.5, 12.3, -11.2, 5.1, -9.1, 7.0, 8.52, 16.2, 3.33, 12.23, 17.0, 15.0, -120.0, -60.5)
 
         assertEquals(7.5, mat.m00)
@@ -177,6 +202,31 @@ class MatrixdTest {
         assertEquals(15.0, mat2.m31)
         assertEquals(-120.0, mat2.m32)
         assertEquals(-60.5, mat2.m33)
+
+        mat2.c0 = Vec4d(12.3, 4.5, 6.2, 7.5)
+        mat2.c1 = Vec4d(7.0, -9.1, 5.1, -11.2)
+        mat2.c2 = Vec4d(12.23, 3.33, 16.2, 8.52)
+        mat2.c3 = Vec4d(-60.5, -120.0, 15.0, 17.0)
+
+        assertEquals(7.5, mat2.m03)
+        assertEquals(6.2, mat2.m02)
+        assertEquals(4.5, mat2.m01)
+        assertEquals(12.3, mat2.m00)
+
+        assertEquals(-11.2, mat2.m13)
+        assertEquals(5.1, mat2.m12)
+        assertEquals(-9.1, mat2.m11)
+        assertEquals(7.0, mat2.m10)
+
+        assertEquals(8.52, mat2.m23)
+        assertEquals(16.2, mat2.m22)
+        assertEquals(3.33, mat2.m21)
+        assertEquals(12.23, mat2.m20)
+
+        assertEquals(17.0, mat2.m33)
+        assertEquals(15.0, mat2.m32)
+        assertEquals(-120.0, mat2.m31)
+        assertEquals(-60.5, mat2.m30)
     }
 
     @Test
