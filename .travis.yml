@@ -1,11 +1,14 @@
-install: gradle wrapper --gradle-version 4.2
+install:
+- |
+  sudo apt-get -y install --upgrade gradle
+  gradle wrapper --gradle-version 6.0.1
 
-dist: xenial
+dist: bionic
 
 language: java
 
 jdk:
-  - oraclejdk8
+  - openjdk9
 
 script:
   - gradle build
